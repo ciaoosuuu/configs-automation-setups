@@ -1,0 +1,29 @@
+#!/bin/sh
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+protected_branch="main"
+
+if [ "$current_branch" = "$protected_branch" ]; then
+    echo "WARNING: You are trying to push directly to the main branch!"
+    echo "It's recommended to use a feature or topic branch and merge your changes through a pull request."
+
+    while true; do
+        read -p "Do you still want to continue? (yes/no) " user_input < /dev/tty
+        case "$user_input" in
+            yes|no)
+                break
+                ;;
+            *)
+                echo "Please enter 'yes' or 'no'."
+                ;;
+        esac
+    done
+
+    if [ "$user_input" != "yes" ]; then
+        echo "Push aborted. Please merge via a pull request."
+        exit 1 
+    fi
+fi
+
+exit 0
