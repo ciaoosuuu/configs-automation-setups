@@ -30,6 +30,12 @@ Install commands:
 
 Note: Check version on website.
 
+### Video playback
+
+IINA: https://iina.io/
+
+Available on Mac
+
 ---
 ### Others
 
